@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
+import { BUSINESS_INFO } from "@/constants/business";
 export default function ContactSection() {
   const [form, setForm] = useState({
     name: "",
@@ -24,7 +24,7 @@ export default function ContactSection() {
 📝 Order Details: ${form.message}
     `;
 
-    const phoneNumber = "917337335674"; // your WhatsApp number
+    const phoneNumber = `91${BUSINESS_INFO.phone}`;
 
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 

@@ -40,7 +40,6 @@ export default function GalleryPage() {
           </p>
         </div>
 
-        {/* FILTER BUTTONS */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {FILTER_CATEGORIES.map((category) => (
             <button
@@ -57,7 +56,6 @@ export default function GalleryPage() {
           ))}
         </div>
 
-        {/* COUNT */}
         <div className="text-center mb-8 text-gray-600">
           Showing{" "}
           <span className="font-semibold text-rose-500">
@@ -66,7 +64,6 @@ export default function GalleryPage() {
           cakes
         </div>
 
-        {/* GRID */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filteredCakes.map((cake, index) => (
             <article
@@ -102,7 +99,6 @@ export default function GalleryPage() {
           ))}
         </div>
 
-        {/* EMPTY STATE */}
         {filteredCakes.length === 0 && (
           <div className="py-16 text-center text-gray-500">
             No cakes found in this category.
