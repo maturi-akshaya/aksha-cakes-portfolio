@@ -1,4 +1,9 @@
-export const GALLERY_IMAGES = [
+export type CakeCategory =
+  | "Birthday"
+  | "Anniversary"
+  | "Theme"
+  | "Custom";
+  export const GALLERY_IMAGES = [
   // Birthday Cakes
   { id: 1, title: "Red Velvet Birthday Cake", category: "Birthday", src: "/gallery/birthday-1.jpeg" },
   { id: 2, title: "Voilet Birthday Cake", category: "Birthday", src: "/gallery/birthday-2.jpeg" },
