@@ -12,34 +12,38 @@ const FILTER_CATEGORIES: FilterCategory[] = [
   "Anniversary",
   "Theme",
   "Custom",
+  "Cookies",
 ];
 
 export default function GalleryPage() {
   const [activeFilter, setActiveFilter] =
     useState<FilterCategory>("All");
 
-  const filteredCakes = useMemo(() => {
+  const filteredItems = useMemo(() => {
     if (activeFilter === "All") return GALLERY_IMAGES;
 
     return GALLERY_IMAGES.filter(
-      (cake) => cake.category === activeFilter
+      (item) => item.category === activeFilter
     );
   }, [activeFilter]);
 
   return (
-    <main className="bg-white min-h-screen py-20 px-6">
-      <div className="max-w-6xl mx-auto">
+    <main className="min-h-screen bg-white py-20 px-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
         <div className="text-center mb-14">
           <h1 className="text-4xl font-bold text-gray-900">
-            Cake Gallery
+            Cakes & Cookies Gallery
           </h1>
 
           <p className="mt-4 max-w-2xl mx-auto text-gray-600">
-            Explore our handcrafted cakes made for birthdays,
-            anniversaries, themed celebrations and custom moments.
+            Explore our handcrafted cakes and cookies made for
+            birthdays, anniversaries, themed celebrations,
+            custom occasions, and sweet gifting moments.
           </p>
         </div>
 
+        {/* Filters */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {FILTER_CATEGORIES.map((category) => (
             <button
@@ -56,52 +60,55 @@ export default function GalleryPage() {
           ))}
         </div>
 
+        {/* Counter */}
         <div className="text-center mb-8 text-gray-600">
           Showing{" "}
           <span className="font-semibold text-rose-500">
-            {filteredCakes.length}
+            {filteredItems.length}
           </span>{" "}
-          cakes
+          items
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {filteredCakes.map((cake, index) => (
-            <article
-              key={cake.id}
-              className="group bg-white border border-rose-100 rounded-2xl overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
-            >
-              <div className="relative overflow-hidden">
-                <Image
-                  src={cake.src}
-                  alt={cake.title}
-                  width={500}
-                  height={500}
-                  priority={index === 0}
-                  className="h-80 w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+        {/* Gallery */}
+        {filteredItems.length > 0 ? (
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+            {filteredItems.map((item, index) => (
+              <article
+                key={item.id}
+                className="group break-inside-avoid mb-8 overflow-hidden rounded-2xl border border-rose-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              >
+                <div className="relative overflow-hidden">
+                  <Image
+                    src={item.src}
+                    alt={item.title}
+                    width={800}
+                    height={800}
+                    priority={index === 0}
+                    className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
+                  />
 
-                <span className="absolute top-4 left-4 bg-white/90 text-rose-500 text-xs font-semibold px-3 py-1 rounded-full shadow-sm">
-                  {cake.category}
-                </span>
-              </div>
+                  <span className="absolute top-4 left-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-rose-500 shadow-sm">
+                    {item.category}
+                  </span>
+                </div>
 
-              <div className="p-5">
-                <h3 className="text-xl font-semibold text-gray-900">
-                  {cake.title}
-                </h3>
+                <div className="p-5">
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    {item.title}
+                  </h3>
 
-                <p className="mt-2 text-sm text-gray-600">
-                  Crafted with premium ingredients and customized for
-                  memorable celebrations.
-                </p>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        {filteredCakes.length === 0 && (
+                  <p className="mt-2 text-sm text-gray-600">
+                    {item.category === "Cookies"
+                      ? "Freshly baked cookies made with premium ingredients and delightful flavors."
+                      : "Crafted with premium ingredients and customized for memorable celebrations."}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
           <div className="py-16 text-center text-gray-500">
-            No cakes found in this category.
+            No items found in this category.
           </div>
         )}
       </div>
