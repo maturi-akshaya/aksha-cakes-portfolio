@@ -56,14 +56,17 @@ Delicious Cakes for Every Occasion 🎂
         {/* Cake Image */}
         <div className="relative w-full h-full animate-float">
           <div className="relative w-full h-full rounded-full overflow-hidden shadow-[0_25px_60px_rgba(236,72,153,0.35)] border-4 border-white/50">
-            <Image
-              src="/mainhero.jpeg"
-              alt="Img"
-              fill
-              priority
-              sizes="(max-width: 640px) 280px, (max-width: 768px) 350px, 480px"
-              className="object-cover"
-            />
+           <Image
+  src="/mainhero.jpeg"
+  alt="Cake"
+  fill
+  priority
+  sizes="(max-width: 640px) 280px, (max-width: 768px) 350px, 480px"
+  className="object-cover"
+  style={{
+    objectPosition: "40% center",
+  }}
+/>
           </div>
         </div>
       </div>
