@@ -4,65 +4,71 @@ import Image from "next/image";
 import { BUSINESS_INFO } from "@/constants/business";
 
 export default function HeroSection() {
-  return (
-    <section
-      id="hero"
-      className="min-h-screen flex items-center 
-      bg-gradient-to-r from-pink-100 via-white to-pink-200"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 grid md:grid-cols-2 gap-10 items-center">
+return (
+<section id="hero" className="min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-pink-100 via-white to-rose-100" >
+<div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 grid md:grid-cols-2 gap-12 items-center">
+{/* LEFT SIDE */}
+<div className="text-center md:text-left">
+<h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-pink-700">
+Delicious Cakes for Every Occasion 🎂
+</h1>
 
-        {/* LEFT SIDE (TEXT) */}
-        <div className="text-center md:text-left">
+      <p className="mt-5 text-lg text-gray-700 max-w-lg mx-auto md:mx-0">
+        Freshly baked eggless cakes made with love for birthdays,
+        anniversaries, baby showers, and every special celebration.
+      </p>
 
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-pink-700 leading-tight">
-            Delicious Cakes for Every Occasion 🎂
-          </h1>
+      <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+        <a
+          href={`https://wa.me/91${BUSINESS_INFO.phone}?text=Hi%20I%20want%20to%20order%20a%20cake`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-pink-600 text-white px-7 py-3 rounded-full shadow-lg hover:bg-pink-700 hover:scale-105 transition-all duration-300"
+        >
+          Order on WhatsApp
+        </a>
 
-          <p className="mt-4 text-base sm:text-lg text-gray-700 max-w-md mx-auto md:mx-0">
-            Freshly baked eggless cakes made with love for birthdays,
-            anniversaries, and special moments.
-          </p>
+        <a
+          href="/gallery"
+          className="border-2 border-pink-600 text-pink-600 px-7 py-3 rounded-full hover:bg-pink-100 hover:scale-105 transition-all duration-300"
+        >
+          View Cakes
+        </a>
+      </div>
+    </div>
 
-          {/* CTA BUTTONS */}
-          <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+    {/* RIGHT SIDE */}
+    <div className="flex justify-center">
+      <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[480px] md:h-[480px]">
+        {/* Main Glow */}
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-400 via-rose-300 to-yellow-300 blur-[80px] opacity-50" />
 
-            <a
-              href={`https://wa.me/91${BUSINESS_INFO.phone}?text=Hi%20I%20want%20to%20order%20a%20cake`}
-              target="_blank"
-              className="bg-pink-600 text-white px-6 py-3 rounded-full shadow-md hover:bg-pink-700 transition text-sm sm:text-base"
-            >
-              Order on WhatsApp
-            </a>
+        {/* Secondary Glow */}
+        <div className="absolute inset-8 rounded-full bg-pink-300 blur-3xl opacity-30 animate-pulse" />
 
-            <a
-              href="/gallery"
-              className="border border-pink-600 text-pink-600 px-6 py-3 rounded-full hover:bg-pink-100 transition text-sm sm:text-base"
-            >
-              View Cakes
-            </a>
+        {/* Decorative Bubble */}
+        <div className="absolute top-8 right-6 w-10 h-10 bg-pink-400 rounded-full opacity-40 animate-bounce" />
 
-          </div>
+        <div className="absolute bottom-12 left-4 w-6 h-6 bg-yellow-300 rounded-full opacity-60 animate-ping" />
 
-        </div>
+        <div className="absolute top-24 left-2 w-5 h-5 bg-rose-300 rounded-full opacity-50 animate-bounce" />
 
-        {/* RIGHT SIDE (IMAGE) */}
-        <div className="flex justify-center">
-
-          <div className="relative w-[260px] sm:w-[320px] md:w-[420px] h-[260px] sm:h-[320px] md:h-[420px]">
-
-           <Image
-            src="/cake-hero.jpg"
-            alt="Cake"
-            fill
-            sizes="(max-width: 640px) 260px, (max-width: 768px) 320px, 420px"
-            className="object-contain drop-shadow-xl"
+        {/* Cake Image */}
+        <div className="relative w-full h-full animate-float">
+          <div className="relative w-full h-full rounded-full overflow-hidden shadow-[0_25px_60px_rgba(236,72,153,0.35)] border-4 border-white/50">
+            <Image
+              src="/mainhero.jpeg"
+              alt="Img"
+              fill
+              priority
+              sizes="(max-width: 640px) 280px, (max-width: 768px) 350px, 480px"
+              className="object-cover"
             />
           </div>
-
         </div>
-
       </div>
-    </section>
-  );
+    </div>
+  </div>
+</section>
+);
 }
